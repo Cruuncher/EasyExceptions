@@ -8,7 +8,7 @@ setup(
   author = 'Patrick Robertshaw',
   author_email = 'patrick.robertshaw1@gmail.com',
   url = 'https://github.com/Cruuncher/EasyExceptions',
-  download_url = 'https://github.com/user/reponame/archive/v_01.tar.gz',    # I explain this later on
+  download_url = 'https://github.com/Cruuncher/EasyExceptions/archive/0.1.0.tar.gz',
   keywords = ['exceptions'],  
   install_requires=[],
   classifiers=[
