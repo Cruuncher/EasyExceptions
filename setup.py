@@ -2,12 +2,12 @@ from distutils.core import setup
 setup(
   name = 'easy_exceptions',
   packages = ['easy_exceptions'],
-  version = '0.1',
+  version = '0.1.0',
   license='MIT',
   description = 'Throw and catch named exceptions without creating a class first',
   author = 'Patrick Robertshaw',
   author_email = 'patrick.robertshaw1@gmail.com',
-  url = 'https://github.com/user/reponame',   # Provide either the link to your github or to your website
+  url = 'https://github.com/Cruuncher/EasyExceptions',
   download_url = 'https://github.com/user/reponame/archive/v_01.tar.gz',    # I explain this later on
   keywords = ['exceptions'],  
   install_requires=[],
