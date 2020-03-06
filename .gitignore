@@ -1,3 +1,11 @@
 .pytest_cache
 **/__pycache__
 *.pyc
+dist
+
+.DS_Store
+
+Pipfile 
+Pipfile.lock
+
+easy_exceptions.egg-info

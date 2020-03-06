@@ -1,14 +1,28 @@
 from distutils.core import setup
+import os
+
+def read_file(filename):
+    with open(os.path.join(os.path.dirname(__file__), filename)) as file:
+        return file.read()
+
+# read the contents of your README file
+from os import path
+this_directory = path.abspath(path.dirname(__file__))
+with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
+    long_description = f.read()
+
 setup(
   name = 'easy_exceptions',
   packages = ['easy_exceptions'],
-  version = '0.1.0',
+  version = '0.1.1',
   license='MIT',
   description = 'Throw and catch named exceptions without creating a class first',
+  long_description_content_type='text/markdown',
+  long_description=long_description,
   author = 'Patrick Robertshaw',
   author_email = 'patrick.robertshaw1@gmail.com',
   url = 'https://github.com/Cruuncher/EasyExceptions',
-  download_url = 'https://github.com/Cruuncher/EasyExceptions/archive/0.1.0.tar.gz',
+  download_url = 'https://github.com/Cruuncher/EasyExceptions/archive/0.1.1.tar.gz',
   keywords = ['exceptions'],  
   install_requires=[],
   classifiers=[
