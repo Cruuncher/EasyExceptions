@@ -7,6 +7,8 @@ def read_file(filename):
 
 # read the contents of your README file
 from os import path
+import setuptools
+
 this_directory = path.abspath(path.dirname(__file__))
 with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
@@ -14,7 +16,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 setup(
   name = 'easy_exceptions',
   packages = ['easy_exceptions'],
-  version = '0.1.1',
+  version = '1.0.0',
   license='MIT',
   description = 'Throw and catch named exceptions without creating a class first',
   long_description_content_type='text/markdown',
@@ -22,7 +24,7 @@ setup(
   author = 'Patrick Robertshaw',
   author_email = 'patrick.robertshaw1@gmail.com',
   url = 'https://github.com/Cruuncher/EasyExceptions',
-  download_url = 'https://github.com/Cruuncher/EasyExceptions/archive/0.1.1.tar.gz',
+  download_url = 'https://github.com/Cruuncher/EasyExceptions/archive/1.0.0.tar.gz',
   keywords = ['exceptions'],  
   install_requires=[],
   classifiers=[
