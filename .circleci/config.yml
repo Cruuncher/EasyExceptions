@@ -8,7 +8,11 @@ jobs:
       - run:
           command: |
             sudo pip install pytest pytest-cov python-coveralls
+      - run:
+          command: |
             pytest --cov-report html --cov-report term-missing --cov=easy_exceptions/ tests/ 
+      - run:
+          command: |
             coveralls
       - store_artifacts:
           path: htmlcov
