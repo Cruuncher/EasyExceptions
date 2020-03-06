@@ -145,3 +145,6 @@ def test_bind_parent():
         assert True 
     except:
         assert False
+
+def test_nameless_exception():
+    assert EasyException() == Exception

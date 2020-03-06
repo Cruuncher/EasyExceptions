@@ -9,3 +9,4 @@ Pipfile
 Pipfile.lock
 
 easy_exceptions.egg-info
+htmlcov

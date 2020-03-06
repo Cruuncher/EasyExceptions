@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.7
+    steps:
+      - checkout 
+      - run:
+          command: |
+            sudo pip install pytest pytest-cov 
+      - run:
+          command: |
+            pytest --cov-report html --cov=easy_exceptions/ tests/
+      - run:
+          command: ls 
+      - store_artifacts:
+          path: htmlcov
