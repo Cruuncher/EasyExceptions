@@ -1,22 +1,37 @@
 import sys
 import os
+import pytest
 sys.path.append(os.path.abspath("."))
 
-from easy_exceptions import EasyException 
+from easy_exceptions import EasyException, bind_parent
+from easy_exceptions.easy_exceptions import reset_module
 
-class ParentException(Exception):
-    def test(self):
-        return 'TEST'
-
-class OtherParentException(Exception):
-    def test(self):
-        return 'FAIL'
+@pytest.fixture(autouse=True) 
+def reset_exception_module():
+    reset_module()
 
 def test_typical():
     try: 
         raise EasyException(name='NamedException') 
     except EasyException(name='NamedException'):
         assert True 
+    except:
+        assert False
+
+def test_raise_with_name_as_arg():
+    try:
+        raise EasyException('NamedException') 
+    except EasyException('NamedException'):
+        assert True 
+    except:
+        assert False
+
+def test_reject_nonalphanum_exception_name():
+    try:
+        EasyException("Test!Symbol") 
+        assert False 
+    except ValueError:
+        assert True
     except:
         assert False
 
@@ -37,6 +52,14 @@ def test_other_named_exception():
         assert False 
 
 def test_parent_exception_differentiated():
+    class ParentException(Exception):
+        def test(self):
+            return 'TEST'
+
+    class OtherParentException(Exception):
+        def test(self):
+            return 'FAIL'
+
     try:
         raise EasyException(name='NamedException', parent=ParentException) 
     except EasyException(name='NamedException'):
@@ -55,6 +78,10 @@ def test_parent_exception_differentiated():
         assert False
 
 def test_catch_using_parent_exception():
+    class ParentException(Exception):
+        def test(self):
+            return 'TEST'
+
     try:
         raise EasyException(name='NamedException', parent=ParentException) 
     except ParentException as e:
@@ -83,9 +110,38 @@ def test_proper_referential_integrity_of_exception_parents():
     except:
         assert False
 
-    # TODO: This test currently passes, but represents a bug. If an exception class is redefined elsewhere with the same name
-    # as a parent used for another exception, these parent classes will not be differentiated. Need a way of nailing down 
-    # what makes a parent class actually unique.
-    # This issue is considered fixed once the following assertion fails (at which time it should be swapped to an !=)
-    # Also, this is a potentially breaking change and should be associated with a major version bump
-    assert EasyException(name='Test', parent=first_definition) == EasyException(name='Test', parent=second_definition)
+    #assert that using different definitions yields different EasyExceptions
+    assert EasyException(name='Test', parent=first_definition) != EasyException(name='Test', parent=second_definition)
+
+    assert EasyException(name='Test', parent=first_definition) == EasyException(name='Test', parent=first_definition)
+    assert EasyException(name='Test', parent=second_definition) == EasyException(name='Test', parent=second_definition)
+
+def test_bind_parent():
+    class ParentException(Exception):
+        def test(self):
+            return 'TEST'
+
+    bind_parent(ParentException)
+
+    try:
+        raise EasyException('NamedException') 
+    except ParentException:
+        assert True 
+    except:
+        assert False
+
+    try:
+        raise EasyException('NamedException') 
+    except EasyException('NamedException'):
+        assert True 
+    except:
+        assert False
+
+    try:
+        raise EasyException('NamedException', parent=Exception)
+    except EasyException('NamedException'):
+        assert False 
+    except EasyException('NamedException', parent=Exception):
+        assert True 
+    except:
+        assert False
