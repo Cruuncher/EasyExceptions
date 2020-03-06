@@ -16,7 +16,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 setup(
   name = 'easy_exceptions',
   packages = ['easy_exceptions'],
-  version = '1.0.1',
+  version = '1.0.2',
   license='MIT',
   description = 'Throw and catch named exceptions without creating a class first',
   long_description_content_type='text/markdown',
@@ -24,7 +24,7 @@ setup(
   author = 'Patrick Robertshaw',
   author_email = 'patrick.robertshaw1@gmail.com',
   url = 'https://github.com/Cruuncher/EasyExceptions',
-  download_url = 'https://github.com/Cruuncher/EasyExceptions/archive/1.0.1.tar.gz',
+  download_url = 'https://github.com/Cruuncher/EasyExceptions/archive/1.0.2.tar.gz',
   keywords = ['exceptions'],  
   install_requires=[],
   classifiers=[

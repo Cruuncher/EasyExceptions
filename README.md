@@ -1,6 +1,6 @@
 [![CircleCI](https://circleci.com/gh/Cruuncher/EasyExceptions/tree/master.svg?style=shield)](https://circleci.com/gh/Cruuncher/EasyExceptions/tree/master) 
 [![Coverage Status](https://coveralls.io/repos/github/Cruuncher/EasyExceptions/badge.svg?branch=master)](https://coveralls.io/github/Cruuncher/EasyExceptions?branch=master)
-[![PyPi](https://img.shields.io/badge/pypi-v1.0.1-blue)](https://pypi.org/project/easy-exceptions/1.0.1/)
+[![PyPi](https://img.shields.io/badge/pypi-v1.0.2-blue)](https://pypi.org/project/easy-exceptions/1.0.2/)
 
 # EasyExceptions
 Throw and catch named exceptions without creating a class first. The goal of this project is to make working with named exceptions simpler. It's often a huge overhead of work to create named exceptions in a separate file before being able to throw them to nicely be caught. 
