@@ -1,5 +1,5 @@
 [![CircleCI](https://circleci.com/gh/Cruuncher/EasyExceptions/tree/master.svg?style=shield)](https://circleci.com/gh/Cruuncher/EasyExceptions/tree/master) 
-[![Coverage Status](https://coveralls.io/repos/github/Cruuncher/EasyExceptions/badge.svg?branch=test-coveralls)](https://coveralls.io/github/Cruuncher/EasyExceptions?branch=test-coveralls)
+[![Coverage Status](https://coveralls.io/repos/github/Cruuncher/EasyExceptions/badge.svg?branch=master)](https://coveralls.io/github/Cruuncher/EasyExceptions?branch=master)
 
 # EasyExceptions
 Throw and catch named exceptions without creating a class first. The goal of this project is to make working with named exceptions simpler. It's often a huge overhead of work to create named exceptions in a separate file before being able to throw them to nicely be caught. 
