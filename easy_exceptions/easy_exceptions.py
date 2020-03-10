@@ -15,7 +15,7 @@ def EasyException(name=None, parent=None):
         return Exception
 
     if not name.isalnum():
-        raise ValueError("Exception name {} is not alphanueric".format(name))
+        raise ValueError("Exception name {} is not alphanumeric".format(name))
 
     if not parent:
         parent = bound_parent
