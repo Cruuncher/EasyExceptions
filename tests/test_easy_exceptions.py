@@ -1,8 +1,12 @@
 import sys
 import os
 import pytest
+import concurrent.futures 
+from random import shuffle
+
 sys.path.append(os.path.abspath("."))
 
+from easy_exceptions import easy_exceptions
 from easy_exceptions import EasyException, bind_parent
 from easy_exceptions.easy_exceptions import reset_module
 
@@ -148,3 +152,24 @@ def test_bind_parent():
 
 def test_nameless_exception():
     assert EasyException() == Exception
+
+
+def test_concurrent_exception_creation():
+    easy_exceptions.TEST_PARALELLISM = True
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        exception_names = ['TEST1','TEST1','TEST1', 'TEST2','TEST2','TEST3','TEST3','TEST4','TEST4']
+        #shuffle(exception_names)
+
+        futures = [executor.submit(EasyException, exception_name) for exception_name in exception_names] 
+
+    results = [f.result() for f in futures]
+    result_dict = {}
+    for i, exception_name in enumerate(exception_names):
+        if exception_name not in result_dict:
+            result_dict[exception_name] = []
+
+        result_dict[exception_name].append(results[i]) 
+
+    for exception_name, results in result_dict.items():
+        for i in range(len(results) - 1):
+            assert results[i] == results[i+1]
